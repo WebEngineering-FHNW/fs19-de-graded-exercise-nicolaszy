@@ -3,6 +3,7 @@
 ## Commit Proposal
 
 Matriculation Number: 16-967-804
+Email               :
 
 Project idea short description: 
 Organise your personal book collection by 
@@ -29,7 +30,11 @@ based on information about books I liked
 
 ## Project confirmation
 
-< to be filled by lecturer>
+Very good. I curious to see your sample data :-)
+
+Confirmed.
+
+D. König
 
 
 ## Project delivery <to be filled by student>
