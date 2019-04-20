@@ -3,7 +3,7 @@
 ## Commit Proposal
 
 Matriculation Number: 16-967-804
-Email               :
+Email               : nicolas.zy@gmail.com
 
 Project idea short description: 
 Organise your personal book collection by 
