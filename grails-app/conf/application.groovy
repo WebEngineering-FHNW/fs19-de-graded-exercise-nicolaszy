@@ -1,6 +1,9 @@
 
 
 // Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.rejectIfNoRule = false
+grails.plugin.springsecurity.fii.rejectPublicInvocations = false
+
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'mvc.SecUser'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'mvc.SecUserSecRole'
 grails.plugin.springsecurity.authority.className = 'mvc.SecRole'
@@ -14,8 +17,11 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/**/js/**',       access: ['permitAll']],
 	[pattern: '/**/css/**',      access: ['permitAll']],
 	[pattern: '/**/images/**',   access: ['permitAll']],
-	[pattern: '/**/favicon.ico', access: ['permitAll']]
+	[pattern: '/**/favicon.ico', access: ['permitAll']],
+	[pattern: '/index.html',     access: ['permitAll']]
 ]
+
+grails.plugin.springsecurity.logout.postOnly = false
 
 grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/assets/**',      filters: 'none'],

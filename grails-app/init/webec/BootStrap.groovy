@@ -9,7 +9,7 @@ class BootStrap {
 
     def init = { servletContext ->
         //on production do not set up the same security accounts
-        if (Environment.current == Environment.PRODUCTION) return;
+        //if (Environment.current == Environment.PRODUCTION) return;
 
         SecUser nicolas = new SecUser(username: "nicolas", password: "myPassword").save(flush:true)
         SecRole admin = new SecRole(authority: SecRole.ROLE_ADMIN).save(flush:true)
