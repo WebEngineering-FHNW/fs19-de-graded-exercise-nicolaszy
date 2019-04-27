@@ -14,6 +14,7 @@ class BootStrap {
         SecUser nicolas = new SecUser(username: "nicolas", password: "myPassword").save(flush:true)
         SecRole admin = new SecRole(authority: SecRole.ROLE_ADMIN).save(flush:true)
         new SecUserSecRole(secUser: nicolas, secRole: admin).save(flush:true)
+
     }
     def destroy = {
     }
