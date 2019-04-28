@@ -19,9 +19,26 @@
 </nav>
 <h2>My Books</h2>
 
+<table>
+
+    <tr>
+    <th>book title</th>
+    <th>isbn</th>
+    <th>rating</th>
+    <th>edit</th>
+    </tr>
+
 <g:each in="${books}" var="book" status="i">
-    <pre><p>${book.bookTitle}    <a href="/book/edit/${book.id}">edit</a></p></pre>
+    <tr>
+    <td>${book.bookTitle}</td>
+    <td>${book.isbn} </td>
+        <td>${book.rating}</td>
+        <td><a href="/book/edit/${book.id}">edit</a></td>
+    </tr>
 </g:each>
-<pre><a href="/book/create">add a book</a></pre>
+
+</table>
+
+<a href="/book/create">add a book</a>
 </body>
 </html>
