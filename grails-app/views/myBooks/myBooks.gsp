@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title></title>
+    <title>Overview</title>
 </head>
 
 <body>
@@ -25,20 +25,20 @@
     <th>book title</th>
     <th>isbn</th>
     <th>rating</th>
-    <th>edit</th>
+%{--    <th>edit</th>--}%
     </tr>
 
 <g:each in="${books}" var="book" status="i">
     <tr>
-    <td>${book.bookTitle}</td>
-    <td>${book.isbn} </td>
-        <td>${book.rating}</td>
-        <td><a href="/book/edit/${book.id}">edit</a></td>
+        <td><a href="/MyBooks/details?id=${book.id}">${book.bookTitle}</a></td>
+        <td><a href="/MyBooks/details?id=${book.id}">${book.isbn}</a></td>
+        <td><a href="/MyBooks/details?id=${book.id}">${book.rating}</a></td>
+%{--        <td><a href="/book/edit/${book.id}">edit</a></td>--}%
     </tr>
 </g:each>
 
 </table>
 
-<a href="/book/create">add a book</a>
+<a href="/MyBooks/add">add a book</a>
 </body>
 </html>
