@@ -33,7 +33,7 @@ class MyBooksController {
 
     def add(){
         //id is a placeholder value and not actually used
-        def book = new Book(bookTitle: "enter book title", isbn: "11111111111", rating: 3, id: 2).save(flush:true)
+        def book = new Book(bookTitle: "enter book title", isbn: "enter an isbn", rating: 3, id: 2).save(flush:true)
         render view: 'DetailedView', model: [book:book]
     }
 
