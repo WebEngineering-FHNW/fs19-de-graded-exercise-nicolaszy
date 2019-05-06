@@ -5,6 +5,7 @@
   Time: 16:21
 --%>
 
+<asset:stylesheet src="application.css"/>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
@@ -12,11 +13,13 @@
 </head>
 
 <body>
+<button><a href="index">back</a></button>
+</br>
 <img id="backdrop" style="float: left; width: 50%;">
 <form action="/MyBooks/changeBookDetails" style="padding-left: 10px; padding-top: 20px; width: calc(50% - 10px); float:right;">
     <input type="hidden" name="id" value="${book.id}">
     <input type="hidden" name="isbn" value="${book.isbn}">
-    <div>book title: ${book.bookTitle}</div>
+    <div><h1>${book.bookTitle}</h1></div>
     <div>isbn: ${book.isbn}</div>
     <div>rating: ${book.rating}</div>
     <div>description: <span id="description"></span></div>
@@ -43,7 +46,6 @@
 
             loaded = true
         }
-
     }
 </script>
 

@@ -13,3 +13,21 @@
 *= require mobile
 *= require_self
 */
+button{
+    background-color: white;
+    border-radius: 20px;
+    color: black;
+    border: 1px solid black;
+    margin: 10px;
+}
+button a:visited{
+    text-decoration: none;
+}
+button a{
+    color: inherit;
+    text-decoration: none;
+}
+button:hover{
+    background-color: black;
+    color: white;
+}
