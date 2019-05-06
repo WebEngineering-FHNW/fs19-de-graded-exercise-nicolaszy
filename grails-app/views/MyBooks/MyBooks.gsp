@@ -21,24 +21,34 @@
 
 <table>
 
-    <tr>
+    <tr align="left">
     <th>book title</th>
     <th>isbn</th>
     <th>rating</th>
-%{--    <th>edit</th>--}%
+    <th>edit</th>
     </tr>
 
 <g:each in="${books}" var="book" status="i">
     <tr>
-        <td><a href="/MyBooks/details?id=${book.id}">${book.bookTitle}</a></td>
-        <td><a href="/MyBooks/details?id=${book.id}">${book.isbn}</a></td>
-        <td><a href="/MyBooks/details?id=${book.id}">${book.rating}</a></td>
-%{--        <td><a href="/book/edit/${book.id}">edit</a></td>--}%
+        <td><a>${book.bookTitle}</a></td>
+        <td><a>${book.isbn}</a></td>
+        <td><a>${book.rating}</a></td>
+       <td><a href="/MyBooks/details?id=${book.id}">edit</a></td>
     </tr>
 </g:each>
 
 </table>
 
-<a href="/MyBooks/add">add a book</a>
+<a id="addBook" href="/MyBooks/add">add a book</a>
+
 </body>
+<style>
+    td,th{
+        padding-right: 20px;
+        padding-bottom: 5px;
+    }
+    #addBook{
+        padding-left: 3px;
+    }
+</style>
 </html>
