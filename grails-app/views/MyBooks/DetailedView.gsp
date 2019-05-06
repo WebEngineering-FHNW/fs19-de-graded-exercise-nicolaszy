@@ -12,24 +12,21 @@
 </head>
 
 <body>
-<form action="/MyBooks/changeBookDetails">
+<img id="backdrop" style="float: left; width: 50%;">
+<form action="/MyBooks/changeBookDetails" style="padding-left: 10px; padding-top: 20px; width: calc(50% - 10px); float:right;">
     <input type="hidden" name="id" value="${book.id}">
     <input type="hidden" name="isbn" value="${book.isbn}">
-book title: ${book.bookTitle}
-</br>
-isbn: ${book.isbn}
-</br>
-rating: ${book.rating}
-</br>
-    description: <span id="description"></span>
-</br>
-    <img id="backdrop">
+    <div>book title: ${book.bookTitle}</div>
+    <div>isbn: ${book.isbn}</div>
+    <div>rating: ${book.rating}</div>
+    <div>description: <span id="description"></span></div>
 </form>
 
 <script>
 
     var loaded = false
     var Http = new XMLHttpRequest()
+    //openlibrary (an open source api for books) is used to get book information based on teh isbn
     Http.open("Get","https://openlibrary.org/api/books?bibkeys=${book.isbn}&format=json&jscmd=details")
     Http.send()
     Http.onreadystatechange=function(){
@@ -49,6 +46,13 @@ rating: ${book.rating}
 
     }
 </script>
+
+
+<style>
+    div{
+        padding-bottom: 10px;
+    }
+</style>
 
 </body>
 </html>
