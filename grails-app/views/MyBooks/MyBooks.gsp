@@ -30,10 +30,10 @@
 
 <g:each in="${books}" var="book" status="i">
     <tr>
-        <td><a>${book.bookTitle}</a></td>
-        <td><a>${book.isbn}</a></td>
-        <td><a>${book.rating}</a></td>
-       <td><a href="/MyBooks/details?id=${book.id}">edit</a></td>
+        <td><a href="/MyBooks/details?id=${book.id}">${book.bookTitle}</a></td>
+        <td><a href="/MyBooks/details?id=${book.id}">${book.isbn}</a></td>
+        <td><a href="/MyBooks/details?id=${book.id}">${book.rating}</a></td>
+       <td><a href="/MyBooks/edit?id=${book.id}">edit</a></td>
     </tr>
 </g:each>
 

@@ -28,6 +28,12 @@ class MyBooksController {
         render view: 'DetailedView', model: [book:book]
     }
 
+    //gets a book by its id and renders it in detailed view in edit mode
+    def edit(int id) {
+        def book = Book.get(id)
+        render view: 'EditView', model: [book:book]
+    }
+
     //gets a book by id, changes information according to user input
     def changeBookDetails(int id, String title, String isbn, int rating){
         def book = Book.get(id)
@@ -49,7 +55,7 @@ class MyBooksController {
 
         //id is a placeholder value and not actually used; it is generated automatically, but needs to be given as a parameter
         def book = new Book(bookTitle: "enter book title", isbn: "enter an isbn", rating: 3, id: 2, username: authentication.getName()).save(flush:true)
-        render view: 'DetailedView', model: [book:book]
+        render view: 'EditView', model: [book:book]
     }
 
 }

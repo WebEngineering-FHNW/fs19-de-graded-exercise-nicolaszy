@@ -14,13 +14,41 @@
 <body>
 <form action="/MyBooks/changeBookDetails">
     <input type="hidden" name="id" value="${book.id}">
-book title: <input type="text" name="title" id="title" minlength="2" required="true" value="${book.bookTitle}">
+    <input type="hidden" name="isbn" value="${book.isbn}">
+book title: ${book.bookTitle}
 </br>
-isbn: <input type="text" name="isbn" id="isbn" minlength="10" maxlength="13" required="true" aria-required="true" aria-errormessage="test" value="${book.isbn}">
+isbn: ${book.isbn}
 </br>
-rating: <input type="range" name="rating" id="rating" min="1" max="5" step="1" required="true" value="${book.rating}">
-    <input type="submit">
+rating: ${book.rating}
+</br>
+    description: <span id="description"></span>
+</br>
+    <img id="backdrop">
 </form>
+
+<script>
+
+    var loaded = false
+    var Http = new XMLHttpRequest()
+    Http.open("Get","https://openlibrary.org/api/books?bibkeys=${book.isbn}&format=json&jscmd=details")
+    Http.send()
+    Http.onreadystatechange=function(){
+
+        //used w3schools XMLHttpRequest tutorial and a lot of trial and error for this part
+        if(!loaded) {
+            console.log(Http.response)
+            var json = JSON.parse(Http.response)
+            var thumbnail_url = json[Object.keys(json)[0]]["thumbnail_url"]
+            thumbnail_url = thumbnail_url.substr(0,thumbnail_url.length-5)+"L.jpg"
+            console.log(thumbnail_url)
+            document.getElementById("backdrop").src = thumbnail_url
+            document.getElementById("description").innerHTML = json[Object.keys(json)[0]]["details"]["description"].value
+
+            loaded = true
+        }
+
+    }
+</script>
 
 </body>
 </html>
