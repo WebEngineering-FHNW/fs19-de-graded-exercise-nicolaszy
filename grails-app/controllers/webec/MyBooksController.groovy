@@ -15,7 +15,10 @@ import org.springframework.security.core.context.SecurityContextHolder
 class MyBooksController {
 
     def index() {
-        def books = Book.list()
+        //get book of current logged in user
+        //used https://www.baeldung.com/get-user-in-spring-security (tutorial for spring security)
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication()
+        def books = Book.findAllByUsername(authentication.getName()).asList()
         render view: 'MyBooks', model: [books:books]
     }
 
@@ -32,8 +35,10 @@ class MyBooksController {
         book.setIsbn(isbn)
         book.setRating(rating)
         book.save(flush:true)
-        //get all books again, render the "My Books" View with all books including the new one
-        def books = Book.list()
+        //get all books of the current user again, render them in a table
+        //used https://www.baeldung.com/get-user-in-spring-security (tutorial for spring security)
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication()
+        def books = Book.findAllByUsername(authentication.getName()).asList()
         render view: 'MyBooks', model: [books:books]
     }
 
@@ -44,7 +49,6 @@ class MyBooksController {
 
         //id is a placeholder value and not actually used; it is generated automatically, but needs to be given as a parameter
         def book = new Book(bookTitle: "enter book title", isbn: "enter an isbn", rating: 3, id: 2, username: authentication.getName()).save(flush:true)
-        print(book.getUsername())
         render view: 'DetailedView', model: [book:book]
     }
 
