@@ -10,9 +10,9 @@ class BookSpec extends Specification implements DomainUnitTest<Book> {
     Book b3
 
     def setup() {
-        b1 = new Book(bookTitle: "To Kill a Mockingbird", isbn: "0060935464", rating: 2, id: 1).save(flush:true);
-        b2 = new Book(bookTitle: "The Catcher in the Rye", isbn: "7543321726", rating: 2, id: 2).save(flush:true);
-        b3 = new Book(bookTitle: "Go Set a Watchman: A Novel", isbn: "9780062409867", rating: 3, id: 3).save(flush:true);
+        b1 = new Book(bookTitle: "To Kill a Mockingbird", isbn: "0060935464", rating: 2, id: 1, username: "nicolas").save(flush:true);
+        b2 = new Book(bookTitle: "The Catcher in the Rye", isbn: "7543321726", rating: 2, id: 2, username: "nicolas").save(flush:true);
+        b3 = new Book(bookTitle: "Go Set a Watchman: A Novel", isbn: "9780062409867", rating: 3, id: 3, username: "nicolas").save(flush:true);
     }
 
     def cleanup() {
