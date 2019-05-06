@@ -60,6 +60,9 @@
                 this application, click on each to execute its default action:
             </p>
 
+            <button><a href="account/createUsersView">create an account</a></button>
+            <button><a href="MyBooks">log in</a></button>
+
             <div id="controllers" role="navigation">
                 <h2>Available Controllers:</h2>
                 <ul>

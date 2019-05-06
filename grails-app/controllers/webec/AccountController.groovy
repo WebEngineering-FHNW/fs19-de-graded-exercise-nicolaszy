@@ -1,12 +1,10 @@
 package webec
 
-import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.Validateable
 import mvc.SecRole
 import mvc.SecUser
 import mvc.SecUserSecRole
 
-@Secured(SecRole.ROLE_ADMIN)
 class AccountController {
 
     def createUsers(String userName, String password){
@@ -15,6 +13,10 @@ class AccountController {
         SecRole admin = new SecRole(authority: SecRole.ROLE_ADMIN).save(flush:true)
         new SecUserSecRole(secUser: user, secRole: admin).save(flush:true)
 
+        redirect(controller:"MyBooks",action:"index")
+    }
+
+    def createUsersView(){
         render view: 'accounts', model: 'AccountModel'
     }
 }

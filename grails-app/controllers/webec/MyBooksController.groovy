@@ -11,7 +11,7 @@ import mvc.SecUserSecRole
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContextHolder
 
-@Secured(SecRole.ROLE_ADMIN)
+@Secured([SecRole.ROLE_ADMIN, SecRole.ROLE_USER])
 class MyBooksController {
 
     def index() {

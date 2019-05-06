@@ -12,7 +12,7 @@
 </head>
 
 <body>
-
+<a href="/logout/index">log out</a>
 <nav>
 <li><a href="#" class="active">My Books</a></li>
     <li><a href="#">Recommendation</a></li>
