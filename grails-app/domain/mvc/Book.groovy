@@ -7,6 +7,7 @@ class Book {
     String isbn
     int rating
     String username
+    String author
 
 
     static constraints = {
@@ -15,5 +16,6 @@ class Book {
         isbn minSize: 10, maxSize: 13
         rating inList: [1,2,3,4,5]
         username minSize: 2
+        author minSize: 2
     }
 }
