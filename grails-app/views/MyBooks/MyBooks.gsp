@@ -54,7 +54,6 @@
                 if(authorName != null){
                     ${book.author} = authorName
                 }
-
                 loaded = true
             }
         }

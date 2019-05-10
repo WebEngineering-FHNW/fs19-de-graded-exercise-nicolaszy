@@ -29,7 +29,6 @@
 
 <script>
 
-    alert(${book.author})
     var loaded = false
     var Http = new XMLHttpRequest()
     //openlibrary (an open source api for books) is used to get book information based on teh isbn
@@ -42,9 +41,10 @@
             console.log(Http.response)
             var json = JSON.parse(Http.response)
             var thumbnail_url = json[Object.keys(json)[0]]["thumbnail_url"]
-            thumbnail_url = thumbnail_url.substr(0,thumbnail_url.length-5)+"L.jpg"
-            console.log(thumbnail_url)
-            document.getElementById("backdrop").src = thumbnail_url
+            if(thumbnail_url!=null) {
+                thumbnail_url = thumbnail_url.substr(0,thumbnail_url.length-5)+"L.jpg"
+                document.getElementById("backdrop").src = thumbnail_url
+            }
             if(json[Object.keys(json)[0]]["details"]["description"] != null){
                 document.getElementById("description").innerHTML = json[Object.keys(json)[0]]["details"]["description"]
             }
@@ -52,20 +52,6 @@
             document.getElementById("author").innerHTML = authorName
             var title = json[Object.keys(json)[0]]["details"]["title"]
             var relatedBooks = "http://openlibrary.org/search.json?author="+authorName
-            Http.open("Get","https://openlibrary.org/api/books?bibkeys=${book.isbn}&format=json&jscmd=details")
-            Http.send()
-            Http.onreadystatechange=function(){
-                json= JSON.parse(Http.response)["docs"];
-                for(var i=0;  i<json.length; i++){
-                    if(json[i]["title_suggest"]!=title){
-                        //add book title as suggestion
-                        //with edition key
-                        json[i]["edition_key"]
-                        //as isbn
-                    }
-                }
-            }
-
             loaded = true
         }
     }

@@ -8,6 +8,7 @@ class Book {
     int rating
     String username
     String author
+    boolean recommendation = false
 
 
     static constraints = {

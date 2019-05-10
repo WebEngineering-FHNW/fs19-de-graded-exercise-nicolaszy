@@ -18,7 +18,7 @@ class MyBooksController {
         //get book of current logged in user
         //used https://www.baeldung.com/get-user-in-spring-security (tutorial for spring security)
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication()
-        def books = Book.findAllByUsername(authentication.getName()).asList()
+        def books = Book.findAllByUsernameAndRecommendation(authentication.getName(),false).asList()
         render view: 'MyBooks', model: [books:books]
     }
 
@@ -54,7 +54,7 @@ class MyBooksController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication()
 
         //id is a placeholder value and not actually used; it is generated automatically, but needs to be given as a parameter
-        def book = new Book(bookTitle: "enter book title", isbn: "enter an isbn", rating: 3, id: 2, username: authentication.getName(), author: "author").save(flush:true)
+        def book = new Book(bookTitle: "enter book title", isbn: "enter an isbn", rating: 3, id: 2, username: authentication.getName(), author: "author", recommendation: false).save(flush:true)
         render view: 'EditView', model: [book:book]
     }
 
