@@ -10,22 +10,23 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Details</title>
+    <link href="https://fonts.googleapis.com/css?family=Karla:700" rel="stylesheet">
+
 </head>
 
 <body>
 <button><a href="index">back</a></button>
 </br>
-<img id="backdrop" style="float: left; width: 40%; margin-left: 5%; margin-right: 5%; margin-top: 2%;">
+<img id="backdrop" style="float: left; width: 30%; margin-left: 10%; margin-right: 10%; margin-top: 2%;">
 <form action="/MyBooks/changeBookDetails" style="padding-left: 10px; padding-top: 20px; width: calc(50% - 10px); float:right;">
     <input type="hidden" name="id" value="${book.id}">
     <input type="hidden" name="isbn" id="isbn" value="${book.isbn}">
-    <div><h1>${book.bookTitle}</h1></div>
-    <div>ISBN: ${book.isbn}</div>
-    <div>Rating: ${book.rating}</div>
-    <div>Genres: <span id="genres"></span></div>
-    <div>Description: <span id="description"></span></div>
-    <div>Author: <span id="author">${book.author}</span></div>
-
+    <h1>${book.bookTitle}</h1>
+    <p>ISBN: ${book.isbn}</p>
+    <p>Rating: ${book.rating}</p>
+    <p>Genres: <span id="genres"></span></p>
+    <p>Description: <span id="description"></span></p>
+    <p>Author: <span id="author">${book.author}</span></p>
 </form>
 
 <script>

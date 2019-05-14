@@ -49,26 +49,26 @@
                     if (response.status === 200) {
                         response.json()
                             .then(data => {
-                                var books = data.docs
-                                var randomBook
+                                var books = data.docs;
+                                var randomBook;
                                 do {
-                                    randomBook = books[Math.floor(Math.random() * books.length) - 1]
+                                    randomBook = books[Math.floor(Math.random() * books.length) - 1];
                                 } while (typeof randomBook === 'undefined' ||
                                          typeof randomBook.isbn === 'undefined' ||
-                                         randomBook.author_name[0] !== 'No Author' ||
-                                         randomBook.author_name[0] !== 'Author Unknown')
+                                         randomBook.author_name[0] === 'No Author' ||
+                                         randomBook.author_name[0] === 'Author Unknown')
 
-                                var formData = new FormData()
-                                formData.append('title', randomBook.title)
-                                formData.append('isbn', randomBook.isbn[0])
-                                formData.append('authorName', randomBook.author_name[0])
+                                var formData = new FormData();
+                                formData.append('title', randomBook.title);
+                                formData.append('isbn', randomBook.isbn[0]);
+                                formData.append('authorName', randomBook.author_name[0]);
 
                                 fetch('/Recommendations/addRecommendedWithIsbn', {
                                     body: formData,
                                     method: 'post'
                                 }).then(response => {
-                                    authorsCompleted++
-                                    if (authorsCompleted >= authors.length) redirect()
+                                    authorsCompleted++;
+                                    if (authorsCompleted >= authors.length) redirect();
                                 })
                             })
                     }
@@ -77,7 +77,7 @@
         })
 
         function redirect () {
-            window.location = "/Recommendations/RecommendationsList"
+            window.location = "/Recommendations/RecommendationsList";
         }
     </script>
 </body>

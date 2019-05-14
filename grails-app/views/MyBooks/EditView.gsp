@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Details</title>
+    <title>Edit Book Details</title>
 </head>
 
 <body>
@@ -32,26 +32,26 @@ rating: <input type="range" name="rating" id="rating" min="1" max="5" step="1" r
             if (response.status === 200) {
             response.json()
                 .then(data => {
-                var formData = new FormData()
-                formData.append('id',document.getElementById("id").value)
-                formData.append('title', data[isbn]["details"]["title"])
-                formData.append('isbn', isbn)
-                formData.append('rating', document.getElementById("rating").value)
-                formData.append('author', data[isbn]["details"]["authors"][0]["name"])
+                var formData = new FormData();
+                formData.append('id',document.getElementById("id").value);
+                formData.append('title', data[isbn]["details"]["title"]);
+                formData.append('isbn', isbn);
+                formData.append('rating', document.getElementById("rating").value);
+                formData.append('author', data[isbn]["details"]["authors"][0]["name"]);
 
 
                 fetch('/MyBooks/changeBookDetails', {
                     body: formData,
                     method: 'post'
                 }).then(response => {
-                    redirect()
+                    redirect();
                 })
         })
         }
         })
     };
     function redirect () {
-        window.location = "/MyBooks/index"
+        window.location = "/MyBooks/index";
     }
     form.addEventListener("submit", addAuthorAndSubmit);
 </script>

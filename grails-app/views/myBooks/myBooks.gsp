@@ -14,8 +14,10 @@
 <body>
 <a href="/logout/index">log out</a>
 <nav>
-<li><a href="#" class="active">My Books</a></li>
-    <li><a href="#">Recommendation</a></li>
+    <ul>
+    <li><a href="#" class="active">My Books</a></li>
+    <li><a href="/Recommendations/index">Recommendation</a></li>
+    </ul>
 </nav>
 <h2>My Books</h2>
 
