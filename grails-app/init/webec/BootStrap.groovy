@@ -1,6 +1,7 @@
 package webec
 
 import grails.util.Environment
+import mvc.Book
 import mvc.SecRole
 import mvc.SecUser
 import mvc.SecUserSecRole
@@ -18,6 +19,13 @@ class BootStrap {
         SecUser standardUser = new SecUser(username: "standardUser", password: "pw").save(flush:true)
         SecRole user = new SecRole(authority: SecRole.ROLE_USER).save(flush:true)
         new SecUserSecRole(secUser: standardUser, secRole: user).save(flush:true)
+
+        String[] books = ["0765342294", "0425201686", "0671461494", "9781594633669", "0006479898"]
+        new Book(bookTitle: "Ender's Game", isbn: books[0], username: "standardUser", rating: 4).save(flush:true)
+        new Book(bookTitle: "Tom Clancy's splinter cell", isbn: books[1], username: "standardUser", rating: 3).save(flush:true)
+        new Book(bookTitle: "The Hitchhiker's Guide to the Galaxy", isbn: books[2], username: "standardUser", rating: 5).save(flush:true)
+        new Book(bookTitle: "The Girl On the Train", isbn: books[3], username: "standardUser", rating: 5).save(flush:true)
+        new Book(bookTitle: "A Clash of Kings", isbn: books[4], username: "standardUser", rating: 4).save(flush:true)
     }
     def destroy = {
     }
