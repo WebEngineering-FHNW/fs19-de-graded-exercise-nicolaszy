@@ -15,46 +15,57 @@
 <body>
 <button><a href="index">back</a></button>
 </br>
-<img id="backdrop" style="float: left; width: 50%;">
+<img id="backdrop" style="float: left; width: 40%; margin-left: 5%; margin-right: 5%; margin-top: 2%;">
 <form action="/MyBooks/changeBookDetails" style="padding-left: 10px; padding-top: 20px; width: calc(50% - 10px); float:right;">
     <input type="hidden" name="id" value="${book.id}">
-    <input type="hidden" name="isbn" value="${book.isbn}">
+    <input type="hidden" name="isbn" id="isbn" value="${book.isbn}">
     <div><h1>${book.bookTitle}</h1></div>
-    <div>isbn: ${book.isbn}</div>
-    <div>rating: ${book.rating}</div>
-    <div>description: <span id="description"></span></div>
-    <div>author: <span id="author"></span></div>
+    <div>ISBN: ${book.isbn}</div>
+    <div>Rating: ${book.rating}</div>
+    <div>Genres: <span id="genres"></span></div>
+    <div>Description: <span id="description"></span></div>
+    <div>Author: <span id="author">${book.author}</span></div>
 
 </form>
 
 <script>
 
-    var loaded = false
-    var Http = new XMLHttpRequest()
-    //openlibrary (an open source api for books) is used to get book information based on teh isbn
-    Http.open("Get","https://openlibrary.org/api/books?bibkeys=${book.isbn}&format=json&jscmd=details")
-    Http.send()
-    Http.onreadystatechange=function(){
-
-        //used w3schools XMLHttpRequest tutorial and a lot of trial and error for this part
-        if(!loaded) {
-            console.log(Http.response)
-            var json = JSON.parse(Http.response)
-            var thumbnail_url = json[Object.keys(json)[0]]["thumbnail_url"]
-            if(thumbnail_url!=null) {
-                thumbnail_url = thumbnail_url.substr(0,thumbnail_url.length-5)+"L.jpg"
-                document.getElementById("backdrop").src = thumbnail_url
-            }
-            if(json[Object.keys(json)[0]]["details"]["description"] != null){
-                document.getElementById("description").innerHTML = json[Object.keys(json)[0]]["details"]["description"]
-            }
-            var authorName = json[Object.keys(json)[0]]["details"]["authors"][0]["name"]
-            document.getElementById("author").innerHTML = authorName
-            var title = json[Object.keys(json)[0]]["details"]["title"]
-            var relatedBooks = "http://openlibrary.org/search.json?author="+authorName
-            loaded = true
-        }
+    var authorName;
+    fetch("https://openlibrary.org/api/books?bibkeys=${book.isbn}&format=json&jscmd=details")
+        .then(response => {
+        if (response.status === 200) {
+        response.json()
+            .then(data => {
+                console.log(data);
+                var isbn = document.getElementById("isbn").value;
+                var thumbnail_url;
+                var description;
+                if(typeof data[isbn]["thumbnail_url"] !== 'undefined') {
+                    thumbnail_url = data[isbn]["thumbnail_url"];
+                    thumbnail_url = thumbnail_url.substr(0, thumbnail_url.length - 5) + "L.jpg";
+                }
+                if(typeof data[isbn]["details"]["description"] !== 'undefined'){
+                    document.getElementById("description").innerText = data[isbn]["details"]["description"];
+                }
+                else{
+                    document.getElementById("description").innerText = "no description available";
+                }
+                if(typeof data[isbn]["details"]["genres"] !== 'undefined'){
+                    var genres = ""
+                    for(var i=0; i<data[isbn]["details"]["genres"].length; i++){
+                        var genre = data[isbn]["details"]["genres"][i];
+                        genres += genre.substring(0,genre.length-1)+","
+                    }
+                    document.getElementById("genres").innerText = genres.substring(0,genres.length-1);
+                }
+                else{
+                    document.getElementById("genres").innerText = "no genres available";
+                }
+                document.getElementById("backdrop").src = thumbnail_url;
+        })
     }
+    })
+
 </script>
 
 

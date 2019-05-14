@@ -35,11 +35,12 @@ class MyBooksController {
     }
 
     //gets a book by id, changes information according to user input
-    def changeBookDetails(int id, String title, String isbn, int rating){
+    def changeBookDetails(int id, String title, String isbn, int rating, String author){
         def book = Book.get(id)
         book.setBookTitle(title)
         book.setIsbn(isbn)
         book.setRating(rating)
+        book.setAuthor(author)
         book.save(flush:true)
         //get all books of the current user again, render them in a table
         //used https://www.baeldung.com/get-user-in-spring-security (tutorial for spring security)
@@ -54,7 +55,7 @@ class MyBooksController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication()
 
         //id is a placeholder value and not actually used; it is generated automatically, but needs to be given as a parameter
-        def book = new Book(bookTitle: "enter book title", isbn: "enter an isbn", rating: 3, id: 2, username: authentication.getName(), author: "author", recommendation: false).save(flush:true)
+        def book = new Book(bookTitle: "enter book title", isbn: "enter an isbn", rating: 3, id: 2, username: authentication.getName(), author: null, recommendation: false).save(flush:true)
         render view: 'EditView', model: [book:book]
     }
 

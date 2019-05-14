@@ -1,6 +1,5 @@
 package webec
 
-
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.Validateable
 import mvc.Book
@@ -15,7 +14,7 @@ class RecommendationsController {
         //get book of current logged in user
         //used https://www.baeldung.com/get-user-in-spring-security (tutorial for spring security)
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication()
-        def books = Book.findAllByUsername(authentication.getName()).asList()
+        def books = Book.findAllByUsernameAndRecommendation(authentication.getName(), false).asList()
         render view: 'RecommendationsLoad', model: [books:books]
     }
 
@@ -32,20 +31,18 @@ class RecommendationsController {
         render view: 'Recommendations', model: [books:books]
     }
 
-    def addRecommendedWithIsbn(String titles, String isbns){
-
+    def addRecommendedWithIsbn(String title, String isbn, String authorName){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication()
-        for(int i=0; i<titles.split(";").length-1;i++) {
-            def title = titles.split(";")[i]
-            def isbn = isbns.split(";")[i]
-            //get the current logged in user
-            //used https://www.baeldung.com/get-user-in-spring-security (tutorial for spring security)
 
-            //id is a placeholder value and not actually used; it is generated automatically, but needs to be given as a parameter
-            if (Book.findAllByBookTitle(title).size() == 0) {
-                new Book(bookTitle: title, isbn: isbn, rating: 3, id: 2, username: authentication.getName(), author: "author", recommendation: true).save(flush: true)
-            }
+        if (Book.findAllByBookTitle(title).size() == 0) {
+            new Book(bookTitle: title, isbn: isbn, rating: 3, id: 0, username: authentication.getName(), author: authorName, recommendation: true).save(flush: true)
         }
+        render(status: 200)
+    }
+
+    def RecommendationsList() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication()
+
         def books = Book.findAllByUsernameAndRecommendation(authentication.getName(), true).asList()
         render view: 'Recommendations', model: [books:books]
     }

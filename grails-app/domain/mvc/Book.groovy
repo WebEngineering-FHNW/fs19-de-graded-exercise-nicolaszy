@@ -17,6 +17,7 @@ class Book {
         isbn minSize: 10, maxSize: 13
         rating inList: [1,2,3,4,5]
         username minSize: 2
-        author minSize: 2
+        //author will be initalized as null and then added based on isbn, so it should be nullable
+        author nullable: true
     }
 }
