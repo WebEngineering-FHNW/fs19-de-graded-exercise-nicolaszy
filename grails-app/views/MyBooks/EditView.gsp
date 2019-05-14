@@ -37,8 +37,12 @@ rating: <input type="range" name="rating" id="rating" min="1" max="5" step="1" r
                 formData.append('title', data[isbn]["details"]["title"]);
                 formData.append('isbn', isbn);
                 formData.append('rating', document.getElementById("rating").value);
-                formData.append('author', data[isbn]["details"]["authors"][0]["name"]);
-
+                if(typeof ["details"]["authors"] !== 'undefined') {
+                    formData.append('author', data[isbn]["details"]["authors"][0]["name"]);
+                }
+                else{
+                    formData.append('author', 'no author available');
+                }
 
                 fetch('/MyBooks/changeBookDetails', {
                     body: formData,

@@ -18,11 +18,11 @@
 <button><a href="index">back</a></button>
 </br>
 <img id="backdrop" style="float: left; width: 30%; margin-left: 10%; margin-right: 10%; margin-top: 2%;">
-<form action="/MyBooks/changeBookDetails" style="padding-left: 10px; padding-top: 20px; width: calc(50% - 10px); float:right;">
+<form action="/MyBooks/changeBookDetails" style="padding-right: 50px; padding-top: 20px; width: calc(50% - 50px); float:right;">
     <input type="hidden" name="id" value="${book.id}">
     <input type="hidden" name="isbn" id="isbn" value="${book.isbn}">
     <h1>${book.bookTitle}</h1>
-    <p>ISBN: ${book.isbn}</p>
+    <p style="padding-top: 10px;">ISBN: ${book.isbn}</p>
     <p>Rating: ${book.rating}</p>
     <p>Genres: <span id="genres"></span></p>
     <p>Description: <span id="description"></span></p>
@@ -46,7 +46,7 @@
                     thumbnail_url = thumbnail_url.substr(0, thumbnail_url.length - 5) + "L.jpg";
                 }
                 if(typeof data[isbn]["details"]["description"] !== 'undefined'){
-                    document.getElementById("description").innerText = data[isbn]["details"]["description"];
+                    document.getElementById("description").innerText = data[isbn]["details"]["description"]["value"];
                 }
                 else{
                     document.getElementById("description").innerText = "no description available";
