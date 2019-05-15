@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<button><a href="index">back</a></button>
+ <button onclick="location.href = 'index'">back</button>
 </br>
 <img id="backdrop" style="float: left; width: 30%; margin-left: 10%; margin-right: 10%; margin-top: 2%;">
 <form action="/MyBooks/changeBookDetails" style="padding-right: 50px; padding-top: 20px; width: calc(50% - 50px); float:right;">

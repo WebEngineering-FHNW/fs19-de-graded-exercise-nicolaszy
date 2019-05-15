@@ -21,11 +21,11 @@ class BootStrap {
         new SecUserSecRole(secUser: standardUser, secRole: user).save(flush:true)
 
         String[] books = ["0765342294", "0425201686", "0671461494", "9781594633669", "0006479898"]
-        new Book(bookTitle: "Ender's Game", isbn: books[0], username: "standardUser", rating: 4).save(flush:true)
-        new Book(bookTitle: "Tom Clancy's splinter cell", isbn: books[1], username: "standardUser", rating: 3).save(flush:true)
-        new Book(bookTitle: "The Hitchhiker's Guide to the Galaxy", isbn: books[2], username: "standardUser", rating: 5).save(flush:true)
-        new Book(bookTitle: "The Girl On the Train", isbn: books[3], username: "standardUser", rating: 5).save(flush:true)
-        new Book(bookTitle: "A Clash of Kings", isbn: books[4], username: "standardUser", rating: 4).save(flush:true)
+        new Book(bookTitle: "Ender's Game", isbn: books[0], username: "standardUser", rating: 4, author: "Orson Scott Card").save(flush:true)
+        new Book(bookTitle: "Tom Clancy's splinter cell", isbn: books[1], username: "standardUser", rating: 3, author: "Tom Clancy").save(flush:true)
+        new Book(bookTitle: "The Hitchhiker's Guide to the Galaxy", isbn: books[2], username: "standardUser", rating: 5, author: "Michael Douglas").save(flush:true)
+        new Book(bookTitle: "The Girl On the Train", isbn: books[3], username: "standardUser", rating: 5, author: "Paula Hawkins").save(flush:true)
+        new Book(bookTitle: "A Clash of Kings", isbn: books[4], username: "standardUser", rating: 4, author: "George R. R. Martin").save(flush:true)
     }
     def destroy = {
     }

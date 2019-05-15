@@ -55,7 +55,7 @@ class MyBooksController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication()
 
         //id is a placeholder value and not actually used; it is generated automatically, but needs to be given as a parameter
-        def book = new Book(bookTitle: "enter book title", isbn: "enter an isbn", rating: null, id: 2, username: authentication.getName(), author: null, recommendation: false).save(flush:true)
+        def book = new Book(bookTitle: "enter book title", isbn: "enter an isbn", rating: 0, id: 2, username: authentication.getName(), author: null, recommendation: false).save(flush:true)
         render view: 'EditView', model: [book:book]
     }
 
