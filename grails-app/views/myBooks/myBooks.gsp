@@ -8,17 +8,22 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>Overview</title>
+    <title>Book Overview</title>
+    <link href="https://fonts.googleapis.com/css?family=Karla:700" rel="stylesheet">
+    <asset:stylesheet src="bookStyle.css"/>
 </head>
 
 <body>
-<a href="/logout/index">log out</a>
+<button id="logout" onclick="location.href = '/logout/index'">log out</button>
 <nav>
     <ul>
     <li><a href="#" class="active">My Books</a></li>
     <li><a href="/Recommendations/index">Recommendation</a></li>
     </ul>
 </nav>
+
+<div id="main">
+
 <h2>My Books</h2>
 
 <table>
@@ -35,7 +40,7 @@
         <td><a href="/MyBooks/details?id=${book.id}">${book.bookTitle}</a></td>
         <td><a href="/MyBooks/details?id=${book.id}">${book.isbn}</a></td>
         <td><a href="/MyBooks/details?id=${book.id}">${book.rating}</a></td>
-       <td><a href="/MyBooks/edit?id=${book.id}">edit</a></td>
+       <td><a class="edit" href="/MyBooks/edit?id=${book.id}">edit</a></td>
     </tr>
     <script>
         var loaded = false
@@ -65,6 +70,7 @@
 </table>
 
 <a id="addBook" href="/MyBooks/add">add a book</a>
+</div>
 
 </body>
 <style>

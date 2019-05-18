@@ -9,6 +9,8 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Edit Book Details</title>
+    <link href="https://fonts.googleapis.com/css?family=Karla:700" rel="stylesheet">
+    <asset:stylesheet src="bookStyle.css"/>
 </head>
 
 <body>

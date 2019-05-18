@@ -1,0 +1,83 @@
+h1{
+    font-size: 2.2em;
+    font-weight: 700;
+    font-family: 'Karla', sans-serif;
+}
+
+h2{
+    font-size: 1.8em;
+    font-weight: 700;
+    font-family: 'Karla', sans-serif;
+    margin-block-end: 0.6em;
+}
+
+p{
+    font-size: 1.2em;
+    line-height: 1.8;
+}
+
+th{
+    font-size: 1.4em;
+}
+a{
+    font-size: 1.4em;
+    color: black;
+}
+td a{
+    text-decoration: none;
+}
+#addBook{
+    color: blue;
+}
+
+nav > ul{
+    list-style-type: none;
+    overflow: hidden;
+    padding-inline-start: 0px;
+    padding: 10px 0px 10px 0px;
+}
+nav > ul > li{
+    float: left;
+}
+nav > ul > li > a{
+    color: blue;
+    padding: 10px;
+}
+.active{
+    color:black;
+}
+
+button{
+    background-color: white;
+    border-radius: 20px;
+    color: black;
+    border: 1px solid black;
+    margin: 10px;
+    font-size: 1em;
+    padding: 6px;
+    display: block;
+    float: left;
+}
+button a:visited{
+    text-decoration: none;
+}
+button a{
+    color: inherit;
+    text-decoration: none;
+}
+button:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+#main{
+    padding-left: 10px;
+}
+.edit{
+    color:blue;
+    text-decoration: underline;
+}
+p, table{
+    font-family: 'Lato', sans-serif;
+}

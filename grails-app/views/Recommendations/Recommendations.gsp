@@ -9,16 +9,22 @@
 <html>
 <head>
     <title>Overview</title>
+    <link href="https://fonts.googleapis.com/css?family=Karla:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <asset:stylesheet src="bookStyle.css"/>
 </head>
 
 <body>
-<a href="/logout/index">log out</a>
+<button id="logout" onclick="location.href = '/logout/index'">log out</button>
 <nav>
     <ul>
     <li><a href="/MyBooks/index">My Books</a></li>
     <li><a href="#" class="active">Recommendation</a></li>
     </ul>
 </nav>
+
+<div id="main">
+
 <h2>My Books</h2>
 
 <table>
@@ -40,6 +46,8 @@
 </g:each>
 
 </table>
+
+</div>
 
 </body>
 <style>

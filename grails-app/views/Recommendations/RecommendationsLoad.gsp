@@ -9,7 +9,9 @@
 <html>
 <head>
     <title>Overview</title>
-
+    <link href="https://fonts.googleapis.com/css?family=Karla:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <asset:stylesheet src="bookStyle.css"/>
     <style>
     td,th {
         padding-right: 20px;
@@ -22,18 +24,21 @@
 </head>
 
 <body>
-    <a href="/logout/index">log out</a>
-
+<button id="logout" onclick="location.href = '/logout/index'">log out</button>
     <nav>
     <ul>
-        <li><a href="#" class="active">My Books</a></li>
-        <li><a href="#">Recommendation</a></li>
+        <li><a href="/MyBooks/index">My Books</a></li>
+        <li><a href="#" class="active">Recommendation</a></li>
     </ul>
     </nav>
+
+    <div id="main">
 
     <h2>My Books</h2>
 
     <h3>generating your personal recommendations...</h3>
+
+    </div>
 
     <g:each in="${books}" var="book" status="i">
         <input type="hidden" name="author" value="${book.author}">

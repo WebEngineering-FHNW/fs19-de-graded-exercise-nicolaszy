@@ -5,17 +5,16 @@
   Time: 16:21
 --%>
 
-<asset:stylesheet src="application.css"/>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Details</title>
     <link href="https://fonts.googleapis.com/css?family=Karla:700" rel="stylesheet">
-
+    <asset:stylesheet src="bookStyle.css"/>
 </head>
 
 <body>
- <button onclick="location.href = 'index'">back</button>
+<button onclick="location.href = 'index'">back</button>
 </br>
 <img id="backdrop" style="float: left; width: 30%; margin-left: 10%; margin-right: 10%; margin-top: 2%;">
 <form action="/MyBooks/changeBookDetails" style="padding-right: 50px; padding-top: 20px; width: calc(50% - 50px); float:right;">
