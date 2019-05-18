@@ -16,7 +16,7 @@
 <body>
 <button onclick="location.href = 'index'">back</button>
 </br>
-<img id="backdrop" style="float: left; width: 30%; margin-left: 10%; margin-right: 10%; margin-top: 2%;">
+<img id="backdrop" style="float: left; width: 30%; margin-left: 10%; margin-right: 10%; margin-top: 2%; clear: both;">
 <form action="/MyBooks/changeBookDetails" style="padding-right: 50px; padding-top: 20px; width: calc(50% - 50px); float:right;">
     <input type="hidden" name="id" value="${book.id}">
     <input type="hidden" name="isbn" id="isbn" value="${book.isbn}">
