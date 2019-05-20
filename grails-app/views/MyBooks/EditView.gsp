@@ -39,7 +39,7 @@ rating: <input type="range" name="rating" id="rating" min="1" max="5" step="1" r
                 formData.append('title', data[isbn]["details"]["title"]);
                 formData.append('isbn', isbn);
                 formData.append('rating', document.getElementById("rating").value);
-                if(typeof ["details"]["authors"] !== 'undefined') {
+                if(typeof data[isbn]["details"]["authors"] !== 'undefined') {
                     formData.append('author', data[isbn]["details"]["authors"][0]["name"]);
                 }
                 else{

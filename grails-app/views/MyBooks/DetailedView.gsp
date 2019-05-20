@@ -29,47 +29,6 @@
     <p>Author: <span id="author">${book.author}</span></p>
 </form>
 
-<script>
-
-    var authorName;
-    //we make an api request to open library, getting the book information with the isbn the user entered
-    fetch("https://openlibrary.org/api/books?bibkeys=${book.isbn}&format=json&jscmd=details")
-        .then(response => {
-        if (response.status === 200) {
-        response.json()
-            .then(data => {
-                //we get all the information we need and then fill it into our html layout
-                var isbn = document.getElementById("isbn").value;
-                var thumbnail_url;
-                var description;
-                if(typeof data[isbn]["thumbnail_url"] !== 'undefined') {
-                    thumbnail_url = data[isbn]["thumbnail_url"];
-                    thumbnail_url = thumbnail_url.substr(0, thumbnail_url.length - 5) + "L.jpg";
-                }
-                if(typeof data[isbn]["details"]["description"] !== 'undefined'){
-                    document.getElementById("description").innerText = data[isbn]["details"]["description"];
-                }
-                else{
-                    document.getElementById("description").innerText = "no description available";
-                }
-                if(typeof data[isbn]["details"]["genres"] !== 'undefined'){
-                    var genres = ""
-                    for(var i=0; i<data[isbn]["details"]["genres"].length; i++){
-                        var genre = data[isbn]["details"]["genres"][i];
-                        genres += genre.substring(0,genre.length-1)+","
-                    }
-                    document.getElementById("genres").innerText = genres.substring(0,genres.length-1);
-                }
-                else{
-                    document.getElementById("genres").innerText = "no genres available";
-                }
-                document.getElementById("backdrop").src = thumbnail_url;
-        })
-    }
-    })
-
-</script>
-
 
 <style>
     div{

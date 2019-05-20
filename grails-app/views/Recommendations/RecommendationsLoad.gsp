@@ -58,18 +58,24 @@
                             .then(data => {
                                 var books = data.docs;
                                 var randomBook;
+                                var maximumIterations = 200;
+                                var iterations = 0;
                                 do {
                                     randomBook = books[Math.floor(Math.random() * books.length) - 1];
-                                } while (typeof randomBook === 'undefined' ||
+                                    iterations+=1;
+                                } while ((typeof randomBook === 'undefined' ||
                                          typeof randomBook.isbn === 'undefined' ||
                                          randomBook.author_name[0] === 'No Author' ||
                                          randomBook.author_name[0] === 'Author Unknown')
+                                         && iterations<maximumIterations)
 
                                 //we pass the data of the book we found to the controller as a form
                                 var formData = new FormData();
-                                formData.append('title', randomBook.title);
-                                formData.append('isbn', randomBook.isbn[0]);
-                                formData.append('authorName', randomBook.author_name[0]);
+                                if(typeof randomBook!=='undefined') {
+                                    formData.append('title', randomBook.title);
+                                    formData.append('isbn', randomBook.isbn[0]);
+                                    formData.append('authorName', randomBook.author_name[0]);
+                                }
 
                                 fetch('/Recommendations/addRecommendedWithIsbn', {
                                     body: formData,
