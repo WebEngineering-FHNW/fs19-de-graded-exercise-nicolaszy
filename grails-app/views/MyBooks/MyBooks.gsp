@@ -42,29 +42,6 @@
         <td><a href="/MyBooks/details?id=${book.id}">${book.rating}</a></td>
        <td><a class="edit" href="/MyBooks/edit?id=${book.id}">edit</a></td>
     </tr>
-    <script>
-        var loaded = false
-        var Http = new XMLHttpRequest()
-        //openlibrary (an open source api for books) is used to get book information based on teh isbn
-        Http.open("Get","https://openlibrary.org/api/books?bibkeys=${book.isbn}&format=json&jscmd=details")
-        Http.send()
-        Http.onreadystatechange=function(){
-
-            //used w3schools XMLHttpRequest tutorial and a lot of trial and error for this part
-            if(!loaded) {
-                console.log(Http.response)
-                var json = JSON.parse(Http.response)
-                var thumbnail_url = json[Object.keys(json)[0]]["thumbnail_url"]
-                thumbnail_url = thumbnail_url.substr(0,thumbnail_url.length-5)+"L.jpg"
-
-                var authorName = json[Object.keys(json)[0]]["details"]["authors"][0]["name"]
-                if(authorName != null){
-                    ${book.author} = authorName
-                }
-                loaded = true
-            }
-        }
-    </script>
 </g:each>
 
 </table>

@@ -14,7 +14,8 @@
 </head>
 
 <body>
-<button onclick="location.href = 'index'">back</button>
+<button onclick="location.href = 'index'">My Books</button>
+<button onclick="location.href = '/Recommendations/index'">Recommendations</button>
 </br>
 <img id="backdrop" style="float: left; width: 34%; margin-left: 8%; margin-right: 8%; margin-top: 2%; clear: both;">
 <form action="/MyBooks/changeBookDetails" style="padding-right: 50px; padding-top: 10px; width: calc(50% - 50px); float:right;">
@@ -31,12 +32,13 @@
 <script>
 
     var authorName;
+    //we make an api request to open library, getting the book information with the isbn the user entered
     fetch("https://openlibrary.org/api/books?bibkeys=${book.isbn}&format=json&jscmd=details")
         .then(response => {
         if (response.status === 200) {
         response.json()
             .then(data => {
-                console.log(data);
+                //we get all the information we need and then fill it into our html layout
                 var isbn = document.getElementById("isbn").value;
                 var thumbnail_url;
                 var description;

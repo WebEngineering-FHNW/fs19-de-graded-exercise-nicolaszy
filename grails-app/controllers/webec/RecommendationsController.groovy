@@ -14,6 +14,7 @@ class RecommendationsController {
         //get book of current logged in user
         //used https://www.baeldung.com/get-user-in-spring-security (tutorial for spring security)
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication()
+        Book.findAllByUsernameAndRecommendation(authentication.getName(),true).each{ it.delete(flush: true) }
         def books = Book.findAllByUsernameAndRecommendation(authentication.getName(), false).asList()
         render view: 'RecommendationsLoad', model: [books:books]
     }

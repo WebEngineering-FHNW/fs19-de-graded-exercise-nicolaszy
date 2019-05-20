@@ -45,9 +45,11 @@
     </g:each>
 
     <script>
+        //we get all authors the user has read books of, so far
         var authors = [...document.getElementsByName('author')].map(el => el.value)
         var authorsCompleted = 0
 
+        //we get each author's books and choose 2 random books to recommend
         authors.forEach(author => {
             fetch('http://openlibrary.org/search.json?author=' + author)
                 .then(response => {
@@ -63,6 +65,7 @@
                                          randomBook.author_name[0] === 'No Author' ||
                                          randomBook.author_name[0] === 'Author Unknown')
 
+                                //we pass the data of the book we found to the controller as a form
                                 var formData = new FormData();
                                 formData.append('title', randomBook.title);
                                 formData.append('isbn', randomBook.isbn[0]);
